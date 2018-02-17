@@ -32,7 +32,8 @@ public class DAOEmployeeApp {
 				System.out.println("7.getEmployeeByNameAndSalary");
 				System.out.println("8.getEmployeeByDepartment");
 				System.out.println("9.Show all employee");
-				System.out.println("10.Exit");
+				System.out.println("10.Show all employee by age");
+				System.out.println("11.Exit");
 				int choice = scan.nextInt();
 				
 				
@@ -125,8 +126,26 @@ public class DAOEmployeeApp {
 								if(employee!=null)
 									System.out.println(employee);
 								break;
+						case 10: List<Employee> employeeList3 = imp.getAllEmployeeInfo();
+								for(Employee employee : employeeList3)
+								if(employee!=null)
+									System.out.println(employee);
+
+								Collections.sort(employeeList3, new Comparator<Employee>() {
+									@Override
+									public int compare(Employee o1, Employee o2) {
+										if(o1.getAge() > o2.getAge())
+											return +1;
+										else if(o1.getAge() < o2.getAge())
+											return -1;
+										else
+											return 0;
+									}
+									
+								});
+								break;
 								
-						case 10:System.exit(0);
+						case 11:System.exit(0);
 								break;
 				}
 			}
